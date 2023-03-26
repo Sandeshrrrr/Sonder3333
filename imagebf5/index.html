@@ -1,0 +1,388 @@
+<!DOCTYPE  html>
+
+<!DOCTYPE  html>
+
+<html>
+
+<head>
+
+<title>My Todo List</title>
+
+<style>
+
+body {
+
+background-color: #f5f5f5;
+
+font-family: "Times New Roman", Times, serif;
+
+font-size: 16px;
+
+color: #333;
+
+}
+
+h1 {
+
+text-align: center;
+
+color: #333;
+
+font-size: 36px;
+
+margin-top: 50px;
+
+margin-bottom: 30px;
+
+}
+
+form {
+
+display: flex;
+
+justify-content: center;
+
+margin-bottom: 30px;
+
+}
+
+input[type="text"] {
+
+padding: 10px;
+
+border: none;
+
+border-radius: 5px;
+
+width: 300px;
+
+font-size: 16px;
+
+color: #333;
+
+margin-right: 10px;
+
+box-shadow: 2px  2px  5px  rgba(0, 0, 0, 0.1);
+
+::placeholder {
+
+color: #999;
+
+}
+
+}
+
+button[type="submit"] {
+
+padding: 10px;
+
+background-color: #333;
+
+color: #fff;
+
+border: none;
+
+border-radius: 5px;
+
+font-size: 16px;
+
+cursor: pointer;
+
+transition: background-color 0.3s ease;
+
+}
+
+button[type="submit"]:hover {
+
+background-color: #555;
+
+}
+
+ul {
+
+list-style-type: none;
+
+margin: 0;
+
+padding: 0;
+
+}
+
+li {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+margin-bottom: 10px;
+
+padding: 10px;
+
+border-radius: 5px;
+
+background-color: #fff;
+
+box-shadow: 2px  2px  5px  rgba(0, 0, 0, 0.1);
+
+}
+
+li  button {
+
+background-color: transparent;
+
+border: none;
+
+color: #999;
+
+font-size: 16px;
+
+cursor: pointer;
+
+transition: color 0.3s ease;
+
+}
+
+li  button:hover {
+
+color: #333;
+
+}
+
+li  input[type="checkbox"] {
+
+margin-right: 10px;
+
+}
+
+li.completed {
+
+text-decoration: line-through;
+
+opacity: 0.5;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>My Todo List</h1>
+
+<form>
+
+<input  type="text"  id="todo-input"  placeholder="Add a todo item">
+
+<button  type="submit"  id="add-todo">+</button>
+
+</form>
+
+<ul  id="todo-list"></ul>
+
+<script>
+
+const  todoInput  = document.getElementById
+
+a
+
+<html>
+
+<head>
+
+<title>My Todo List</title>
+
+<style>
+
+body {
+
+background-color: pink;
+
+}
+
+h1 {
+
+text-align: center;
+
+color: white;
+
+text-shadow: 2px 2px black;
+
+font-size: 48px;
+
+}
+
+button {
+
+margin-left: 10px;
+
+}
+
+ul {
+
+list-style-type: none;
+
+margin: 0;
+
+padding: 0;
+
+}
+
+li {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+margin-bottom: 10px;
+
+padding: 10px;
+
+border-radius: 5px;
+
+background-color: white;
+
+}
+
+li button {
+
+background-color: pink;
+
+border: none;
+
+color: white;
+
+font-weight: bold;
+
+border-radius: 5px;
+
+cursor: pointer;
+
+}
+
+li button:hover {
+
+background-color: red;
+
+}
+
+li input[type="checkbox"] {
+
+margin-right: 10px;
+
+}
+
+li.completed {
+
+text-decoration: line-through;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>My Todo List</h1>
+
+<form>
+
+<input  type="text"  id="todo-input"  placeholder="Add a todo item">
+
+<button  type="submit"  id="add-todo">Add</button>
+
+</form>
+
+<ul  id="todo-list"></ul>
+
+<script>
+
+    const addTodo = (todoText) => {
+  const todo = {
+    text: todoText,
+    completed: false
+  };
+  const todoItem = document.createElement('li');
+  todoItem.innerHTML = `
+    <input type="checkbox">
+    <span>${todoText}</span>
+    <button>X</button>
+  `;
+  todoList.appendChild(todoItem);
+
+  const deleteButton = todoItem.querySelector('button');
+  deleteButton.addEventListener('click', () => {
+    todoItem.remove();
+    todos = todos.filter((t) => t.text !== todo.text);
+    saveTodos();
+  });
+
+  const completedCheckbox = todoItem.querySelector('input[type="checkbox"]');
+  completedCheckbox.addEventListener('change', () => {
+    if (completedCheckbox.checked) {
+      todoItem.classList.add('completed');
+    } else {
+      todoItem.classList.remove('completed');
+    }
+    todo.completed = completedCheckbox.checked;
+    saveTodos();
+  });
+
+  todos.push(todo);
+  saveTodos();
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+<img src="brenttodolist.jpg" width="350" height="600">
+<img src="chrisheriatodolisy.jpg" width="350" height="600">
+const todoList = document.getElementById('todo-list');
+let todos = [];
+
+const saveTodos = () => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+};
+
+const loadTodos = () => {
+  const todosString = localStorage.getItem('todos');
+  if (todosString) {
+    todos = JSON.parse(todosString);
+    todos.forEach((todo) => {
+      const todoItem = document.createElement('li');
+      todoItem.innerHTML = `
+        <input type="checkbox" ${todo.completed ? 'checked' : ''}>
+        <span>${todo.text}</span>
+        <button>X</button>
+      `;
+      if (todo.completed) {
+        todoItem.classList.add('completed');
+      }
+      todoList.appendChild(todoItem);
+
+      const deleteButton = todoItem.querySelector('button');
+      deleteButton.addEventListener('click', () => {
+        todoItem.remove();
+        todos = todos.filter((t) => t.text !== todo.text);
+        saveTodos();
+      });
+
+      const completedCheckbox = todoItem.querySelector('input[type="checkbox"]');
+      completedCheckbox.addEventListener('change', () => {
+        if (completedCheckbox.checked) {
+          todoItem.classList.add('completed');
+        } else {
+          todoItem.classList.remove('completed');
+        }
+        todo.completed = completed
+        <img src="chrisheriatodolisy.jpg" width="350" height="600">
